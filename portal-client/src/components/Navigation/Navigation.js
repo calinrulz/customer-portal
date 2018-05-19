@@ -1,32 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu } from 'element-react';
 
 import './Navigation.scss';
 
-export default class Navigation extends Component {
-  onOpen() {
-
-  }
-
-  onClose() {
-
-  }
-
-  render() {
-    return (
-      <div>
-        <Menu
-          defaultActive="1"
-          className="nav-menu-container"
-          onOpen={this.onOpen.bind(this)}
-          onClose={this.onClose.bind(this)}
-          theme="dark"
-        >
+const Navigation = () => {
+  return (
+    <div>
+      <Menu
+        defaultActive="1"
+        className="nav-menu-container"
+        theme="dark"
+      >
+        <Link to="/dashboard">
           <Menu.Item index="1"><i className="el-icon-menu"></i>Dashboard</Menu.Item>
+        </Link>
+        <Link to="/profile">
           <Menu.Item index="2"><i className="el-icon-setting"></i>Profile</Menu.Item>
+        </Link>
+        <Link to="/transactions">
           <Menu.Item index="3"><i className="el-icon-information"></i>Transactions</Menu.Item>
-        </Menu>
-      </div>
-    )
-  }
-}
+        </Link>
+      </Menu>
+    </div>
+  );
+};
+
+export default Navigation;
