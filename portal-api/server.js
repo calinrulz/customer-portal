@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
   res.json({ "message": "Welcome to Customer Portal application. Part of Acme Bank" });
 });
 
-// Require Notes routes
-require('./app/routes/note.routes.js')(app);
+// Require Users routes
+require('./app/routes/user.routes.js')(app);
 
 // listen for requests
 app.listen(3001, () => {
