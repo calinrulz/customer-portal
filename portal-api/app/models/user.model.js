@@ -5,7 +5,7 @@ const AccountDetailsSchema = mongoose.Schema({
 });
 const AccountSchema = mongoose.Schema({
   accountNumber: Number,
-  currentBallance: Number,
+  currentBalance: Number,
   currency: String,
   active: Boolean,
   accountDetails: [AccountDetailsSchema]

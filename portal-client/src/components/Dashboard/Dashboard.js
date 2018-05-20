@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Card } from 'element-react';
 import 'element-theme-default';
 
@@ -11,43 +12,20 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      columns: [
-        {
-          label: "Account Number",
-          prop: "accountNumber",
-          width: 150
-        },
-        {
-          label: "Currency",
-          prop: "currency",
-          width: 100
-        },
-        {
-          label: "Current Balance",
-          prop: "currentBalance",
-          width: 150
-        },
-        {
-          label: "Status",
-          prop: "status",
-          width: 100
-        }
-      ],
-      data: [
-        {
-          accountNumber: 37720838923923,
-          currency: 'EUR',
-          currentBalance: 3289,
-          status: 'active'
-        },
-        {
-          accountNumber: 99838782398999,
-          currency: 'USD',
-          currentBalance: -2901,
-          status: 'not-active'
-        }
-      ]
+      data: []
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/users/5b015d78470973963df0dbde')
+      .then(res => {
+        const data = res.data.activeAccounts;
+        console.log(data);
+        return this.setState({ data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -64,18 +42,7 @@ class Dashboard extends Component {
               </div>
             }
           >
-            <InfoTable data={this.state.data} columns={this.state.columns} />
-          </Card>
-
-          <Card
-            className="box-card portal-card-box"
-            header={
-              <div className="clearfix">
-                <span className="box-title">Accounts</span>
-              </div>
-            }
-          >
-            <InfoTable data={this.state.data} columns={this.state.columns} />
+            <InfoTable data={this.state.data} />
           </Card>
         </div>
       </div>

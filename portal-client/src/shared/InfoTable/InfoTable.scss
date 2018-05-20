@@ -1,14 +1,52 @@
 .table-container {
+  color: #334156;
+  text-align: center;
+
   thead .cell {
     color: #777;
+    font-weight: 400;
   }
 
-  .el-table th,
-  tbody .cell {
-    text-align: center;
+  .account-table-row {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+    font-weight: 300;
+    font-size: 1.1em;
+    border-bottom: 1px solid #d2dbe6;
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 
-  tbody .el-table_1_column_1 .cell {
-    text-align: left;
+  .table-header-row {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+    color: #777777;
+    background-color: #e7f5ff;
+    border-bottom: 1px solid #d2dbe6;
+  }
+
+  .account-number {
+    width: 30%;
+  }
+  .currency {
+    width: 20%;
+  }
+  .current-balance {
+    width: 30%;
+  }
+  .active-account {
+    width: 20%;
+
+    .el-icon-check {
+      color: #13CE66;
+    }
+
+    .el-icon-close {
+      color: #FF4949;
+    }
   }
 }
