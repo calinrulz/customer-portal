@@ -1,3 +1,15 @@
 .app-container {
   height: 100vh;
+  background-color: #efefef;
+}
+
+.portal-card-box {
+  .el-card__header {
+    background-color: #f9f9f9;
+  }
+
+  .box-title {
+    text-transform: uppercase;
+    color: #606977;
+  }
 }

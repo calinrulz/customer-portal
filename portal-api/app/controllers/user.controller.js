@@ -18,6 +18,8 @@ exports.create = (req, res) => {
     address: req.body.address,
     activeAccounts: req.body.activeAccounts,
     accountNumber: req.body.accountNumber,
+    currentBallance: req.body.currentBallance,
+    currency: req.body.currency,
     active: req.body.active,
     // FIXME: Ajust on the go, not sure now how it looks
     accountDetails: req.body.accountDetails,
@@ -87,6 +89,8 @@ exports.update = (req, res) => {
     address: req.body.phoneNumber,
     activeAccounts: req.body.activeAccounts,
     accountNumber: req.body.accountNumber,
+    currentBallance: req.body.currentBallance,
+    currency: req.body.currency,
     active: req.body.active,
     // FIXME: Ajust on the go, not sure now how it looks
     accountDetails: req.body.accountDetails,

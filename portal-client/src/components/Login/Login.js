@@ -14,11 +14,11 @@ class Login extends Component {
     this.state = {
       redirectToReferrer: false,
       form: {
-        name: '',
+        username: '',
         password: ''
       },
       rules: {
-        name: [
+        username: [
           { required: true, message: 'Please input the username', trigger: 'blur' },
           {
             validator: (rule, value, callback) => {
@@ -81,7 +81,7 @@ class Login extends Component {
 
     return (
       <div className="login-container">
-        <h2>Welcome to Acme Bank Portal</h2>
+        <h2>Acme Bank Customer Portal</h2>
 
         <Card className="box-card form-container">
           <h3>Login</h3>
@@ -92,20 +92,20 @@ class Login extends Component {
             rules={this.state.rules}
             className="login-form"
           >
-            <Form.Item prop="name">
+            <Form.Item prop="username">
               <Input
                 placeholder="Username"
-                value={this.state.form.name}
-                onChange={this.onChange.bind(this, 'name')}
+                value={this.state.form.username}
+                onChange={this.onChange.bind(this, 'username')}
               />
             </Form.Item>
 
-            <Form.Item prop="pass">
+            <Form.Item prop="password">
               <Input
                 placeholder="Password"
                 type="password"
-                value={this.state.form.pass}
-                onChange={this.onChange.bind(this, 'pass')}
+                value={this.state.form.password}
+                onChange={this.onChange.bind(this, 'password')}
               />
             </Form.Item>
 

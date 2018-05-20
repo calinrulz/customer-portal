@@ -1,0 +1,17 @@
+.dashboard-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  padding: 0 2em;
+
+  h2 {
+    text-align: center;
+    color: #324157;
+    text-shadow: 0 1px 0 #fff;
+  }
+
+  .dashboard-account-info-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}

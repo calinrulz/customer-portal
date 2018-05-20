@@ -1,0 +1,14 @@
+.table-container {
+  thead .cell {
+    color: #777;
+  }
+
+  .el-table th,
+  tbody .cell {
+    text-align: center;
+  }
+
+  tbody .el-table_1_column_1 .cell {
+    text-align: left;
+  }
+}

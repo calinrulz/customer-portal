@@ -12,6 +12,9 @@ const Navigation = () => {
         className="nav-menu-container"
         theme="dark"
       >
+        <h4>Acme Bank</h4>
+        <span className="underline"></span>
+
         <Link to="/dashboard">
           <Menu.Item index="1"><i className="el-icon-menu"></i>Dashboard</Menu.Item>
         </Link>
