@@ -12,20 +12,24 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      data: ''
+      data: null,
+      errorMessage: null
     };
   }
 
   componentDidMount() {
     this.getUserData()
       .then(res => this.setState({ data: res.data.activeAccounts }))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.setState({ errorMessage: err.message });
+      });
   }
 
   getUserData = async () => {
     const response = await axios.get('http://localhost:3001/users/5b015d78470973963df0dbde');
 
-    if (response.status !== 200) throw Error(response.message);
+    if (response.status !== 200) throw new Error(response.message);
     return response;
   }
 
@@ -43,7 +47,9 @@ class Dashboard extends Component {
               </div>
             }
           >
-            <InfoTable data={this.state.data} />
+            {this.state.errorMessage ? (
+              <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
+            ) : <InfoTable data={this.state.data} />}
           </Card>
         </div>
       </div>
