@@ -35,7 +35,7 @@ export default class InfoTable extends Component {
                 </div>
               </Layout.Row>
             );
-          }) : <div>Loading...</div>
+          }) : <div className="loading-spinner"><i className="el-icon-loading"></i></div>
         }
       </div>
     )

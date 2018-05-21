@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import InfoTable from '../../shared/InfoTable';
+
 import { Card } from 'element-react';
 import 'element-theme-default';
-
-import InfoTable from '../../shared/InfoTable';
 
 import './Dashboard.scss';
 
@@ -12,20 +12,21 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      data: []
+      data: ''
     };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/users/5b015d78470973963df0dbde')
-      .then(res => {
-        const data = res.data.activeAccounts;
-        console.log(data);
-        return this.setState({ data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.getUserData()
+      .then(res => this.setState({ data: res.data.activeAccounts }))
+      .catch(err => console.log(err));
+  }
+
+  getUserData = async () => {
+    const response = await axios.get('http://localhost:3001/users/5b015d78470973963df0dbde');
+
+    if (response.status !== 200) throw Error(response.message);
+    return response;
   }
 
   render() {
