@@ -4,6 +4,19 @@
   height: 100vh;
   padding: 0 2em;
 
+  .clearfix-title {
+    display: flex;
+    justify-content: center;
+
+    .box-title {
+      align-self: center;
+    }
+
+    .box-title-button {
+      margin-left: auto;
+    }
+  }
+
   h2 {
     text-align: center;
     color: #324157;

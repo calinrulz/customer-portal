@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card } from 'element-react';
+import { Card, Button } from 'element-react';
 
 import './TitleWithCardBox.scss';
 
@@ -13,8 +13,13 @@ export default class TitleWithCardBox extends Component {
           <Card
             className="box-card portal-card-box"
             header={
-              <div className="clearfix">
+              <div className="clearfix-title">
                 <span className="box-title">{this.props.cardTitle}</span>
+                {this.props.cardButton ? (
+                  <span className="box-title-button">
+                    <Button type="primary">Edit</Button>
+                  </span>
+                ) : ''}
               </div>
             }
           >

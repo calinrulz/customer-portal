@@ -1,21 +1,28 @@
-.profile-container {
+.personal-info-container {
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
-  padding: 0 2em;
+  justify-content: flex-start;
+  font-weight: 200;
 
-  h2 {
-    text-align: center;
-    color: #324157;
-    text-shadow: 0 1px 0 #fff;
-  }
-
-  .dashboard-account-info-container {
+  .personal-info-box {
     display: flex;
-    justify-content: space-around;
-  }
+    align-items: center;
+    border-bottom: 1px solid #d2dbe6;
 
-  .portal-card-box {
-    width: 50%;
+    &:last-child {
+      border: none;
+    }
+
+    span {
+      padding: 1em;
+
+      &:first-child {
+        width: 13%;
+        text-align: right;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #324057;
+      }
+    }
   }
 }
