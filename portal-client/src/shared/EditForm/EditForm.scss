@@ -1,0 +1,14 @@
+.edit-form-container {
+  .el-form-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .el-form-item__label {
+    width: 18%;
+  }
+
+  .el-form-item__content {
+    flex: 1;
+  }
+}

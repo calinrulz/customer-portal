@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TitleWithCardBox from '../../shared/TitleWithCardBox';
+import EditInfoDialog from '../../shared/EditInfoDialog';
+import EditForm from '../../shared/EditForm';
 
 import axios from 'axios';
 
@@ -11,7 +13,8 @@ class Profile extends Component {
 
     this.state = {
       data: null,
-      errorMessage: null
+      errorMessage: null,
+      dialogVisible: false
     };
   }
 
@@ -31,41 +34,65 @@ class Profile extends Component {
     return response;
   }
 
+  openEditForm = () => {
+    this.setState({ dialogVisible: true });
+  }
+
+  exitForm = () => {
+    this.setState({ dialogVisible: false });
+  }
+
   render() {
+    const { dialogVisible } = this.state;
+
     return (
-      <TitleWithCardBox
-        title="Acme Bank Customer Portal"
-        cardTitle="Personal Information"
-        cardButton={true}
-      >
-        {this.state.errorMessage ? (
-          <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
-        ) : (
-          this.state.data ? (
-            <div className="personal-info-container">
-            <div className="personal-info-box">
-              <span>Name:</span>
-              <span>{this.state.data.name}</span>
-            </div>
+      <div>
+        <TitleWithCardBox
+          title="Acme Bank Customer Portal"
+          cardTitle="Personal Information"
+          cardButton={true}
+          editForm={this.openEditForm}
+        >
+          {this.state.errorMessage ? (
+            <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
+          ) : (
+            this.state.data ? (
+              <div className="personal-info-container">
+                <div className="personal-info-box">
+                  <span>Customer ID:</span>
+                  <span>{this.state.data._id}</span>
+                </div>
 
-            <div className="personal-info-box">
-              <span>Email:</span>
-              <span>{this.state.data.email}</span>
-            </div>
+                <div className="personal-info-box">
+                  <span>Name:</span>
+                  <span>{this.state.data.name}</span>
+                </div>
 
-            <div className="personal-info-box">
-              <span>Phone Number:</span>
-              <span>{this.state.data.phoneNumber}</span>
-            </div>
+                <div className="personal-info-box">
+                  <span>Email:</span>
+                  <span>{this.state.data.email}</span>
+                </div>
 
-            <div className="personal-info-box">
-              <span>Address:</span>
-              <span>{this.state.data.address}</span>
-            </div>
-          </div>
-          ) : <div className="loading-spinner"><i className="el-icon-loading"></i></div>
-        )}
-      </TitleWithCardBox>
+                <div className="personal-info-box">
+                  <span>Phone Number:</span>
+                  <span>{this.state.data.phoneNumber}</span>
+                </div>
+
+                <div className="personal-info-box">
+                  <span>Address:</span>
+                  <span>{this.state.data.address}</span>
+                </div>
+              </div>
+            ) : <div className="loading-spinner"><i className="el-icon-loading"></i></div>
+          )}
+        </TitleWithCardBox>
+
+        <EditInfoDialog dialogVisible={dialogVisible} cancelForm={this.exitForm}>
+          {this.state.data ? (
+            <EditForm formData={this.state.data}/>
+          ) : ''}
+        </EditInfoDialog>
+      </div>
     );
   }
 }

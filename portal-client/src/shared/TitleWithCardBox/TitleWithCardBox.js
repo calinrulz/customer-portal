@@ -17,7 +17,7 @@ export default class TitleWithCardBox extends Component {
                 <span className="box-title">{this.props.cardTitle}</span>
                 {this.props.cardButton ? (
                   <span className="box-title-button">
-                    <Button type="primary">Edit</Button>
+                    <Button type="primary" onClick={this.props.editForm.bind(this)}>Edit</Button>
                   </span>
                 ) : ''}
               </div>
