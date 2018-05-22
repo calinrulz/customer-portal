@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Button } from 'element-react';
-import 'element-theme-default';
+import TitleWithCardBox from '../../shared/TitleWithCardBox';
 
 import './Profile.scss';
 
 class Profile extends Component {
   render() {
     return (
-      <div className="profile-container">
-        <Button type="primary">Your Profile Page</Button>
-      </div>
+      <TitleWithCardBox
+        title="Acme Bank Customer Portal"
+        cardTitle="Personal Information"
+      >
+
+      </TitleWithCardBox>
     );
   }
 }

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TitleWithCardBox from '../../shared/TitleWithCardBox';
 import InfoTable from '../../shared/InfoTable';
-
-import { Card } from 'element-react';
-import 'element-theme-default';
 
 import './Dashboard.scss';
 
@@ -35,24 +33,14 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard-container">
-        <h2>Welcome to Acme Bank Portal</h2>
-
-        <div className="dashboard-account-info-container">
-          <Card
-            className="box-card portal-card-box"
-            header={
-              <div className="clearfix">
-                <span className="box-title">Accounts</span>
-              </div>
-            }
-          >
-            {this.state.errorMessage ? (
-              <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
-            ) : <InfoTable data={this.state.data} />}
-          </Card>
-        </div>
-      </div>
+      <TitleWithCardBox
+        title="Welcome to Acme Bank Customer Portal"
+        cardTitle="Accounts"
+      >
+        {this.state.errorMessage ? (
+          <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
+        ) : <InfoTable data={this.state.data} />}
+      </TitleWithCardBox>
     );
   }
 }

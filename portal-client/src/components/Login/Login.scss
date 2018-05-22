@@ -21,7 +21,6 @@
       text-align: center;
       font-weight: 400;
       color: #676767;
-      -webkit-margin-before: 0;
     }
 
     .el-card__body {
@@ -32,8 +31,7 @@
   }
 
   .login-form {
-    width: 100%;
-    margin-top: 1em;
+    padding: 1em;
 
     .el-form-item__content {
       display: flex;
