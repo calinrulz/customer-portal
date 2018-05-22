@@ -32,7 +32,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <TitleWithCardBox
         title="Acme Bank Customer Portal"
@@ -64,7 +63,7 @@ class Profile extends Component {
               <span>{this.state.data.address}</span>
             </div>
           </div>
-          ) : ''
+          ) : <div className="loading-spinner"><i className="el-icon-loading"></i></div>
         )}
       </TitleWithCardBox>
     );
