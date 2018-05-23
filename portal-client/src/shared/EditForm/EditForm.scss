@@ -11,4 +11,12 @@
   .el-form-item__content {
     flex: 1;
   }
+
+  .edit-info-submit-button {
+    margin-bottom: 0;
+
+    & > div {
+      text-align: center;
+    }
+  }
 }

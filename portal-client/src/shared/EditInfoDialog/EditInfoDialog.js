@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dialog, Button } from 'element-react';
+import { Dialog } from 'element-react';
 
 import './EditInfoDialog.scss';
 
@@ -20,10 +20,10 @@ export default class EditInfoDialog extends Component {
             {this.props.children}
           </Dialog.Body>
 
-          <Dialog.Footer className="dialog-footer">
+          {/* <Dialog.Footer className="dialog-footer">
             <Button onClick={this.props.cancelForm.bind(this)}>Cancel</Button>
             <Button type="primary" onClick={() => this.setState({ dialogVisible: false })}>Confirm</Button>
-          </Dialog.Footer>
+          </Dialog.Footer> */}
         </Dialog>
       </div>
     )

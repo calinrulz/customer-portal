@@ -36,14 +36,18 @@ export default class EditForm extends Component {
           } }
         ],
         phoneNumber: [
-          { required: true, message: 'Please input the phoneNumber', trigger: 'blur' },
+          { required: true, type: 'number', message: 'Please input the phoneNumber', trigger: 'blur' },
           { validator: (rule, value, callback) => {
-            if (value === '') {
-              callback(new Error('Please input the phoneNumber'));
-            } else {
-              callback();
-            }
-          } }
+            let number = parseInt(value, 0);
+
+            setTimeout(() => {
+              if (!Number.isInteger(number)) {
+                callback(new Error('Please input digits'));
+              } else {
+                callback();
+              }
+            }, 500)
+          }, trigger: 'change' }
         ],
         address: [
           { required: true, message: 'Please input the address', trigger: 'blur' },
@@ -78,6 +82,7 @@ export default class EditForm extends Component {
   }
 
   onChange(key, value) {
+    console.log(value);
     this.setState({
       form: Object.assign({}, this.state.form, { [key]: value })
     });
@@ -110,7 +115,7 @@ export default class EditForm extends Component {
 
           <Form.Item label="Phone Number" prop="phoneNumber">
             <Input
-              type="text"
+              type="number"
               value={this.state.form.phoneNumber}
               onChange={this.onChange.bind(this, 'phoneNumber')}
             />
@@ -124,7 +129,7 @@ export default class EditForm extends Component {
             />
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item className="edit-info-submit-button">
             <Button type="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
           </Form.Item>
         </Form>
