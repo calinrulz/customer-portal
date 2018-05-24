@@ -13,4 +13,4 @@ To get started follow the instructions
 * `npm install` / `yarn install`
 * `npm start` / `yarn start`
 
-## Go to `portal-api` or `portal-client` to find more info regarding the project
+### Go to `portal-api` or `portal-client` to find more info regarding the project
