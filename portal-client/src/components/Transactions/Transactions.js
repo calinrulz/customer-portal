@@ -1,14 +1,50 @@
 import React, { Component } from 'react';
-import { Button } from 'element-react';
-import 'element-theme-default';
+import axios from 'axios';
+import TitleWithCardBox from '../../shared/TitleWithCardBox';
+import TransactionHistory from '../../shared/TransactionHistory';
 
 import './Transactions.scss';
 
 class Transactions extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null,
+      errorMessage: null
+    };
+  }
+
+  componentDidMount() {
+    this.getUserData()
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => {
+        console.log(err);
+        this.setState({ errorMessage: err.message });
+      });
+  }
+
+  getUserData = async () => {
+    const response = await axios.get('http://localhost:3001/users/5b015d78470973963df0dbde');
+
+    if (response.status !== 200) throw new Error(response.message);
+    return response;
+  }
+
   render() {
+    const { data } = this.state;
     return (
       <div className="transactions-container">
-        <Button type="primary">Your Transactions Page</Button>
+        <TitleWithCardBox
+          title="Acme Bank Customer Portal"
+          cardTitle="Transactions History"
+        >
+          {
+            data ?
+            <TransactionHistory accountTransactions={data} /> :
+            <div className="loading-spinner"><i className="el-icon-loading"></i></div>
+          }
+        </TitleWithCardBox>
       </div>
     );
   }
