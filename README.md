@@ -1,14 +1,14 @@
 # Welcome to Acme Bank Customer Portal
 To get started follow the instructions
 
-##Open Terminal
+## Open Terminal
 
-###First tab
+### First tab
 * `cd portal-api`
 * `npm install`
 * `npm start`
 
-###Second tab
+### Second tab
 * `cd portal-client`
 * `npm install` / `yarn install`
 * `npm start` / `yarn start`
