@@ -13,7 +13,7 @@ export default class TransactionHistory extends Component {
           label: '',
           children: [
             {
-              label: "level two 1-1",
+              label: '',
             }
           ]
         },
@@ -22,12 +22,27 @@ export default class TransactionHistory extends Component {
   }
 
   componentDidMount = () => {
-    const transactionHistory = Object.assign({}, this.props.accountTransactions);
-    const currentData = this.state.data.slice();
+    const { activeAccounts } = Object.assign({}, this.props.accountTransactions);
+    let parsedData = [];
 
-    transactionHistory.map(account => {
-      
-    })
+    // Extract data from DB and match structure with 'element-react' library structure
+    activeAccounts.map(account => {
+      const { accountNumber } = account;
+
+      return account.accountDetails.map(accountDetails => {
+        return parsedData.push({
+          label: `Account: ${accountNumber}`,
+          children: [
+            { label: `Deposit: $${accountDetails.deposits}` },
+            { label: `Withdrawal: $${accountDetails.withdrawals}` }
+          ]
+        });
+      });
+    });
+
+    return this.setState({
+      data: parsedData
+    });
   }
 
   render() {
