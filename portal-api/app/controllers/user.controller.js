@@ -21,7 +21,6 @@ exports.create = (req, res) => {
     currentBalance: req.body.currentBallance,
     currency: req.body.currency,
     active: req.body.active,
-    // FIXME: Ajust on the go, not sure now how it looks
     accountDetails: req.body.accountDetails,
     deposits: req.body.deposits,
     withdrawals: req.body.withdrawals
@@ -92,7 +91,6 @@ exports.update = (req, res) => {
     currentBalance: req.body.currentBallance,
     currency: req.body.currency,
     active: req.body.active,
-    // FIXME: Ajust on the go, not sure now how it looks
     accountDetails: req.body.accountDetails,
     deposits: req.body.deposits,
     withdrawals: req.body.withdrawals
