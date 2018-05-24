@@ -86,7 +86,7 @@ exports.update = (req, res) => {
     name: req.body.name || "John Doe",
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
-    address: req.body.phoneNumber,
+    address: req.body.address,
     activeAccounts: req.body.activeAccounts,
     accountNumber: req.body.accountNumber,
     currentBalance: req.body.currentBallance,

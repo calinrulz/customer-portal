@@ -42,6 +42,11 @@ class Profile extends Component {
     this.setState({ dialogVisible: false });
   }
 
+  handleUpdate = (data) => {
+    this.setState({ data });
+    this.setState({ dialogVisible: false });
+  }
+
   render() {
     const { dialogVisible } = this.state;
 
@@ -89,7 +94,7 @@ class Profile extends Component {
 
         <EditInfoDialog dialogVisible={dialogVisible} cancelForm={this.exitForm}>
           {this.state.data ? (
-            <EditForm formData={this.state.data}/>
+            <EditForm formData={this.state.data} handleUpdateData={this.handleUpdate} />
           ) : ''}
         </EditInfoDialog>
       </div>

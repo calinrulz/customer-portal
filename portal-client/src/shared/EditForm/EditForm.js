@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Form, Input, Button } from 'element-react';
 
 import './EditForm.scss';
@@ -35,20 +36,6 @@ export default class EditForm extends Component {
             }
           } }
         ],
-        phoneNumber: [
-          { required: true, type: 'number', message: 'Please input the phoneNumber', trigger: 'blur' },
-          { validator: (rule, value, callback) => {
-            let number = parseInt(value, 0);
-
-            setTimeout(() => {
-              if (!Number.isInteger(number)) {
-                callback(new Error('Please input digits'));
-              } else {
-                callback();
-              }
-            }, 500)
-          }, trigger: 'change' }
-        ],
         address: [
           { required: true, message: 'Please input the address', trigger: 'blur' },
           { validator: (rule, value, callback) => {
@@ -73,6 +60,7 @@ export default class EditForm extends Component {
 
     this.refs.form.validate((valid) => {
       if (valid) {
+        this.updateData();
         console.log('submit!');
       } else {
         console.log('error submit!!');
@@ -82,10 +70,20 @@ export default class EditForm extends Component {
   }
 
   onChange(key, value) {
-    console.log(value);
     this.setState({
       form: Object.assign({}, this.state.form, { [key]: value })
     });
+  }
+
+  updateData() {
+    const { form } = this.state;
+
+    axios.put('http://localhost:3001/users/5b015d78470973963df0dbde', form)
+      .then(res => {
+        console.log(res.data);
+        this.props.handleUpdateData(res.data);
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
