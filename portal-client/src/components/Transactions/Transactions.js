@@ -39,11 +39,13 @@ class Transactions extends Component {
           title="Acme Bank Customer Portal"
           cardTitle="Transactions History"
         >
-          {
+          {this.state.errorMessage ? (
+            <h3 className="error-message">Content cannot be displayed! {this.state.errorMessage}</h3>
+          ) : (
             data ?
             <TransactionHistory accountTransactions={data} /> :
             <div className="loading-spinner"><i className="el-icon-loading"></i></div>
-          }
+          )}
         </TitleWithCardBox>
       </div>
     );
