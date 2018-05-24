@@ -49,6 +49,7 @@ export default class TransactionHistory extends Component {
     return (
       <div>
         <Tree
+          className="transaction-accounts-table-container"
           data={this.state.data}
           highlightCurrent={true}
           onNodeClicked={(data, reactElement) => {
