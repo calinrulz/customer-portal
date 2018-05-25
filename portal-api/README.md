@@ -1,5 +1,15 @@
 # Acme Bank Customer Portal API
 
+### First things first
+1. Create an account at [mLab](https://mlab.com), create a database and add a user for that DB.
+2. Head over in the terminal and `touch .env` to create a .env file in the root of `portal-api`.
+3. Inside .env file add these lines:
+```
+DB_USER=<username-from-step-1>
+DB_PASS=<password-from-step-1>
+
+```
+
 ### `npm install`
 Install dependencies
 
