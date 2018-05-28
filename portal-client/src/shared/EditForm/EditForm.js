@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Input, Button } from 'element-react';
+import { Form, Input, Button, Notification } from 'element-react';
 
 import './EditForm.scss';
 
@@ -27,7 +27,8 @@ export default class EditForm extends Component {
           } }
         ],
         email: [
-          { required: true, message: 'Please input the email', trigger: 'blur' },
+          { required: true, message: 'Please input email address', trigger: 'blur' },
+          { type: 'email', message: 'Please input correct email address', trigger: 'blur,change' },
           { validator: (rule, value, callback) => {
             if (value === '') {
               callback(new Error('Please input the email'));
@@ -61,9 +62,17 @@ export default class EditForm extends Component {
     this.refs.form.validate((valid) => {
       if (valid) {
         this.updateData();
-        console.log('submit!');
+
+        Notification.success({
+          title: 'Success',
+          message: 'Your personal data has been updated!'
+        });
       } else {
-        console.log('error submit!!');
+        Notification.error({
+          title: 'Error',
+          message: 'Something went wrong. Please try again!'
+        });
+
         return false;
       }
     });
