@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import routes from '../../router';
 import { Layout } from 'element-react';
 import fakeAuth from '../../shared/fakeAuth';
+import { base } from '../../base';
 
 import Navigation from '../Navigation/index';
 
